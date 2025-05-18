@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lumioli - AI Business Assistant</title>
+
+  <link rel="icon" href="favicon.png" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- particles.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --primary-color: #00e0ff;
+      --card-bg: rgba(0,0,0,0.05);
+      --header-footer-bg: #f0f0f5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body.dark-mode {
+      --bg-color: linear-gradient(135deg, #1e1e2f, #2f2f4f);
+      --text-color: #ffffff;
+      --primary-color: #00e0ff;
+      --card-bg: rgba(255,255,255,0.06);
+      --header-footer-bg: rgba(22, 22, 46, 0.8);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.5s ease;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Particle background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      background: var(--bg-color);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .navbar a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #ffffff;
+    }
+
+    header, footer {
+      background: var(--header-footer-bg);
+      padding: 4rem 0;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      transition: all 0.5s ease;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: var(--text-color);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      opacity: 0.8;
+    }
+
+    .hero, .features, .cofounders-section, .contact-section {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      max-width: 280px;
+      transition: transform 0.4s, box-shadow 0.4s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .feature-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 224, 255, 0.4);
+    }
+
+    .feature-card h3 {
+      color: var(--primary-color);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cofounders-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      margin: 3rem auto;
+    }
+
+    .cofounder-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .cofounder-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 16px;
+      width: 240px;
+      transition: transform 0.4s;
+    }
+
+    .cofounder-card:hover {
+      transform: scale(1.05);
+    }
+
+    .cofounder-card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .contact-section form input,
+    .contact-section form textarea,
+    .contact-section form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      max-width: 1200px;
+      margin: auto;
+      gap: 30px;
+    }
+
+    .footer-column ul, .footer-column p {
+      list-style: none;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Particle Background -->
+<div id="particles-js"></div>
+
+<button class="theme-toggle" onclick="document.body.classList.toggle('dark-mode')">Toggle Theme</button>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+  <a href="#team">Team</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- Header -->
+<header id="home">
+  <h1>We help you automate, engage, and grow with cutting-edge AI solutions.</h1>
+</header>
+
+<section class="hero">
+  <img src="logo1.jpg" alt="Lumioli Logo" style="width: 300px; height: 250px; border-radius: 50%;">
+  <h1>Lumioli – AI Business Assistant</h1>
+  <p>Built to Simplify, Designed to Grow.</p>
+</section>
+
+<!-- Services -->
+<section class="features" id="services">
+  <a href="customer-support-bot.html"><div class="feature-card"><h3>Customer Support Bot</h3><p>Answers FAQs, handles bookings, and directs leads.</p></div></a>
+  <a href="social-media-assistant.html"><div class="feature-card"><h3>Social Media Assistant</h3><p>Writes posts, replies to messages, boosts presence.</p></div></a>
+  <a href="review-manager.html"><div class="feature-card"><h3>Review Manager</h3><p>Collects and responds to Google reviews.</p></div></a>
+  <a href="lead-generator.html"><div class="feature-card"><h3>Lead Generator</h3><p>Engages visitors and collects leads.</p></div></a>
+  <a href="appointment-scheduler.html"><div class="feature-card"><h3>Appointment Scheduler</h3><p>Automates scheduling and reduces no-shows.</p></div></a>
+  <a href="campaign-agent.html"><div class="feature-card"><h3>Campaign Agent</h3><p>Sends targeted email/SMS campaigns.</p></div></a>
+  <a href="feedback-collector.html"><div class="feature-card"><h3>Feedback Collector</h3><p>Asks for feedback via chatbot.</p></div></a>
+  <a href="business-data-assistant.html"><div class="feature-card"><h3>Business Data Assistant</h3><p>Answers questions from internal documents.</p></div></a>
+</section>
+
+<!-- Team -->
+<section class="cofounders-section" id="team">
+  <h2>Our Team</h2>
+  <h3>Lumioli AI Solutions Leadership</h3>
+  <div class="cofounder-cards">
+    <div class="cofounder-card">
+      <img src="founder.jpg" alt="Manal Shah">
+      <p>Co-founder</p>
+      <p><strong>Manal Shah</strong></p>
+      <img src="cad.PNG" alt="Canada" style="width:50px; height:25px;">
+    </div>
+    <div class="cofounder-card">
+      <img src="cofounder.jpg" alt="Aashka Shah">
+      <p>Co-founder</p>
+      <p><strong>Aashka Shah</strong></p>
+      <img src="ind.PNG" alt="India" style="width:50px; height:25px;">
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="contact">
+  <h2>Contact Us</h2>
+  <p>Lumioli.ai.solutions@gmail.com</p>
+  <form action="https://formsubmit.co/Lumioli.ai.solutions@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://lumioli.com/thank-you.html">
+    <button type="submit" style="background-color: var(--primary-color);">Send Message</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Services</h4>
+      <p><a href="customer-support-bot.html">Customer Engagement Suite</a></p>
+      <p><a href="social-media-assistant.html">Social Media Assistant</a></p>
+      <p><a href="campaign-agent.html">Campaign Agent</a></p>
+      <p><a href="lead-generator.html">Lead Management</a></p>
+      <p><a href="appointment-scheduler.html">Appointment Management</a></p>
+      <p><a href="business-data-assistant.html">Business Data Assistant</a></p>
+    </div>
+    <div class="footer-column">
+      <h4>Canada - Halifax</h4>
+      <p>+1 (647)572-0265</p>
+      <p>West22 Living, Halifax, Nova Scotia</p>
+    </div>
+    <div class="footer-column">
+      <h4>India - Ahmedabad</h4>
+      <p>+91 63594 57247</p>
+      <p>Devnandan Mega Mall, Ashram Road</p>
+    </div>
+  </div>
+  <p>© 2025 Lumioli. All rights reserved.</p>
+</footer>
+
+<!-- Chatbot Embed -->
+<script>
+  window.chatbaseConfig = { chatbotId: "z4tmVHx3FgQR3TE87qn7e" };
+</script>
+<script src="https://www.chatbase.co/embed.min.js" defer></script>
+
+<!-- Glow navbar on scroll -->
+<script>
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      navbar.style.boxShadow = "0 0 20px var(--primary-color), 0 0 40px var(--primary-color)";
+      navbar.style.background = "rgba(0,0,0,0.3)";
+    } else {
+      navbar.style.boxShadow = "0 8px 32px 0 rgba(0,0,0,0.2)";
+      navbar.style.background = "rgba(255,255,255,0.05)";
+    }
+  });
+</script>
+
+<!-- ParticlesJS config -->
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 80, "density": { "enable": true, "value_area": 800 }},
+    "color": { "value": "#00e0ff" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5, "random": true },
+    "size": { "value": 3, "random": true },
+    "line_linked": { "enable": true, "distance": 150, "color": "#00e0ff", "opacity": 0.4, "width": 1 },
+    "move": { "enable": true, "speed": 4, "direction": "none", "out_mode": "out" }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": true, "mode": "grab" },
+      "onclick": { "enable": true, "mode": "push" }
+    },
+    "modes": {
+      "grab": { "distance": 140, "line_linked": { "opacity": 1 }},
+      "push": { "particles_nb": 4 }
+    }
+  },
+  "retina_detect": true
+});
+</script>
+
+</body>
+</html>

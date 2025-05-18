@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appointment Scheduler - Lumioli</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --light-bg: linear-gradient(135deg, #e0f7fa, #ffffff);
+      --dark-bg: linear-gradient(135deg, #1e1e2f, #2f2f4f);
+      --primary-color: #00e0ff;
+      --text-color-light: #222;
+      --text-color-dark: #ddd;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--dark-bg);
+      color: var(--text-color-dark);
+      position: relative;
+      overflow-x: hidden;
+      transition: background 0.6s, color 0.6s;
+    }
+
+    body.light-theme {
+      background: var(--light-bg);
+      color: var(--text-color-light);
+    }
+
+    header, footer {
+      background: rgba(20, 20, 40, 0.7);
+      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.6s;
+    }
+
+    body.light-theme header, body.light-theme footer {
+      background: rgba(255, 255, 255, 0.6);
+      color: #222;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      transition: background 0.6s;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1, h2 {
+      color: var(--primary-color);
+      text-align: center;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      color: inherit;
+    }
+
+    p {
+      color: inherit;
+      line-height: 1.6;
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-item strong {
+      color: var(--primary-color);
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .cta a {
+      background: var(--primary-color);
+      color: #1e1e2f;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .cta a:hover {
+      background: #00c0dd;
+    }
+
+    /* Toggle Theme Button */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background 0.4s;
+    }
+
+    .theme-toggle:hover {
+      background: #00c0dd;
+    }
+
+    /* Background Animation */
+    .background-bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .background-bubbles span {
+      position: absolute;
+      display: block;
+      width: 40px;
+      height: 40px;
+      background: var(--primary-color);
+      opacity: 0.3;
+      border-radius: 50%;
+      animation: floatBubbles 20s linear infinite;
+    }
+
+    .background-bubbles span:nth-child(1) {
+      left: 10%;
+      animation-duration: 15s;
+      animation-delay: 0s;
+    }
+    .background-bubbles span:nth-child(2) {
+      left: 30%;
+      animation-duration: 20s;
+      animation-delay: 3s;
+    }
+    .background-bubbles span:nth-child(3) {
+      left: 50%;
+      animation-duration: 25s;
+      animation-delay: 6s;
+    }
+    .background-bubbles span:nth-child(4) {
+      left: 70%;
+      animation-duration: 18s;
+      animation-delay: 2s;
+    }
+    .background-bubbles span:nth-child(5) {
+      left: 90%;
+      animation-duration: 22s;
+      animation-delay: 4s;
+    }
+
+    @keyframes floatBubbles {
+      0% {
+        top: 100%;
+        transform: translateX(0) scale(1);
+      }
+      100% {
+        top: -10%;
+        transform: translateX(50px) scale(1.5);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+<div class="background-bubbles">
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<header>
+  <h1>Lumioli - Appointment Scheduler</h1>
+</header>
+
+<div class="container">
+  <h1>Smarter Booking, Less No-Shows</h1>
+  <p>Automate appointment scheduling with Lumioli’s AI Scheduler—fully integrated with your calendar and personalized for your clients.</p>
+
+  <h2>Benefits</h2>
+  <ul>
+    <li>24/7 self-booking for your clients</li>
+    <li>Calendar sync to prevent double bookings</li>
+    <li>Automated reminders via email/SMS</li>
+    <li>Reduces manual effort and no-shows</li>
+  </ul>
+
+  <h2>How It Works</h2>
+  <p>The AI bot handles scheduling directly through your site or chat. Customers select time slots, answer pre-qualifying questions if needed, and get instant confirmations and reminders—all synced with your Google or Outlook calendar.</p>
+
+  <h2>FAQs</h2>
+  <div class="faq-item">
+    <strong>Which calendars does it support?</strong>
+    <p>Google Calendar, Microsoft Outlook, and iCal are supported.</p>
+  </div>
+  <div class="faq-item">
+    <strong>Can I limit availability or set buffer times?</strong>
+    <p>Yes, you have full control over your schedule and availability settings.</p>
+  </div>
+  <div class="faq-item">
+    <strong>Will it send reminders to clients?</strong>
+    <p>Absolutely. It sends SMS and/or email reminders before the appointment.</p>
+  </div>
+
+  <div class="cta">
+    <a href="index.html">← Back to Home</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Lumioli. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('light-theme');
+  }
+</script>
+
+<!-- Lumioli AI Chatbot via Chatbase -->
+<script>
+  window.chatbaseConfig = {
+    chatbotId: "z4tmVHx3FgQR3TE87qn7e"
+  }
+</script>
+<script src="https://www.chatbase.co/embed.min.js" defer></script>
+
+</body>
+</html>
